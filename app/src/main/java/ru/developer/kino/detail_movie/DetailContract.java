@@ -1,6 +1,6 @@
-package ru.developer.kino.movie;
+package ru.developer.kino.detail_movie;
 
-public interface MovieContract {
+public interface DetailContract {
 
     interface View {
 

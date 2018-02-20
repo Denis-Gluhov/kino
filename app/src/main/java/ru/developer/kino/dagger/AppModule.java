@@ -10,10 +10,9 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import ru.developer.kino.data.api.ApiService;
 
 @Module
-public class NetworkModule {
+public class AppModule {
 
     @NonNull
     @Provides
