@@ -11,7 +11,7 @@ import ru.developer.kino.model.ResponseFilms;
 public interface ApiService {
 
     String BASE_URL = "https://api.themoviedb.org/";
-    String GET_POSTER_URL = "http://image.tmdb.org/t/p/w185/";
+    String GET_POSTER_URL = "http://image.tmdb.org/t/p/w185";
     String TOKEN = "0f959fc9ada028ea3674065dceb7c164";
 
 //    String GET_ALL = "https://api.themoviedb.org/3/discover/movie?api_key=0f959fc9ada028ea3674065dceb7c164&primary_release_date.gte=2018-02-11&primary_release_date.lte=2018-02-18";

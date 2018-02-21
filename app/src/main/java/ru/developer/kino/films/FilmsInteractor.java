@@ -9,7 +9,12 @@ public class FilmsInteractor implements FilmsContract.Interactor {
     @NonNull
     private final ApiService apiService;
 
-    public FilmsInteractor(@NonNull ApiService apiService) {
+    FilmsInteractor(@NonNull ApiService apiService) {
         this.apiService = apiService;
+    }
+
+    @Override
+    public void load(@NonNull LoadListener listener) {
+
     }
 }
