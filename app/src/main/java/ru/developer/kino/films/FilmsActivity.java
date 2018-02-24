@@ -1,12 +1,12 @@
 package ru.developer.kino.films;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.List;
@@ -16,9 +16,13 @@ import javax.inject.Inject;
 import ru.developer.kino.App;
 import ru.developer.kino.BaseActivity;
 import ru.developer.kino.R;
+import ru.developer.kino.detail_movie.DetailActivity;
 import ru.developer.kino.model.Movie;
 
-public class FilmsActivity extends BaseActivity implements FilmsContract.View {
+public class FilmsActivity extends BaseActivity implements FilmsContract.View,
+                                                            FilmsAdapter.OnClickListener {
+
+    private final static String MOVIE_ID = "movieId";
 
     @Inject
     FilmsContract.Presenter presenter;
@@ -32,7 +36,7 @@ public class FilmsActivity extends BaseActivity implements FilmsContract.View {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_films);
         initToolbar();
         initRecyclerView();
         presenter.load();
@@ -90,6 +94,18 @@ public class FilmsActivity extends BaseActivity implements FilmsContract.View {
     @Override
     public void showMessage(@NonNull String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClick(@NonNull Movie movie) {
+        presenter.showDetailMovie(movie);
+    }
+
+    @Override
+    public void goToDetailMovie(int movieId) {
+        Intent intentDetailMovie = new Intent(this, DetailActivity.class);
+        intentDetailMovie.putExtra(MOVIE_ID, movieId);
+        startActivity(intentDetailMovie);
     }
 
     @Override

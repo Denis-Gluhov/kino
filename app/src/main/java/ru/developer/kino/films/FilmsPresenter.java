@@ -38,4 +38,9 @@ public class FilmsPresenter implements FilmsContract.Presenter,
     public void onFail(@NonNull Throwable throwable) {
 
     }
+
+    @Override
+    public void showDetailMovie(@NonNull Movie movie) {
+        view.goToDetailMovie(movie.getId());
+    }
 }

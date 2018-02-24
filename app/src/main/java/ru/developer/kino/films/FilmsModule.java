@@ -6,6 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
+import java.lang.ref.WeakReference;
+
 import javax.inject.Named;
 
 import dagger.Module;
@@ -62,8 +64,16 @@ public class FilmsModule {
     @NonNull
     @FilmsScoupe
     @Provides
-    FilmsAdapter provideAdapter(@NonNull @Named("films") Context context) {
+    WeakReference<FilmsAdapter.OnClickListener> provideListener() {
+        return new WeakReference<FilmsAdapter.OnClickListener>((FilmsAdapter.OnClickListener) view);
+    }
+
+    @NonNull
+    @FilmsScoupe
+    @Provides
+    FilmsAdapter provideAdapter(@NonNull @Named("films") Context context,
+                                @NonNull WeakReference<FilmsAdapter.OnClickListener> listener) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        return new FilmsAdapter(context, inflater);
+        return new FilmsAdapter(context, inflater, listener);
     }
 }

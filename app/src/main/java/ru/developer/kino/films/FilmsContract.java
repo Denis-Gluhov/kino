@@ -19,11 +19,15 @@ public interface FilmsContract {
 
         void setData(@NonNull List<Movie> data);
 
+        void goToDetailMovie(int movieId);
+
     }
 
     interface Presenter {
 
         void load();
+
+        void showDetailMovie(@NonNull Movie movie);
 
     }
 
