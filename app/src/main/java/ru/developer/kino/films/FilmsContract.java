@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import java.util.List;
 
 import ru.developer.kino.model.Movie;
+import ru.developer.kino.model.ResponseFilms;
 
 public interface FilmsContract {
 
@@ -15,6 +16,8 @@ public interface FilmsContract {
         void hideProgressLoading();
 
         void showMessage(@NonNull String msg);
+
+        void setData(@NonNull List<Movie> data);
 
     }
 
@@ -30,7 +33,7 @@ public interface FilmsContract {
 
         interface LoadListener {
 
-            void onSuccess(@NonNull List<Movie> data);
+            void onSuccess(@NonNull ResponseFilms data);
 
             void onFail(@NonNull Throwable throwable);
         }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -54,6 +55,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Movie movie = data.get(position);
+        holder.nameFilm.setText(movie.getTitle());
         loadImage(holder.imageFilm, ApiService.GET_POSTER_URL + movie.getPosterPath());
     }
 
@@ -62,7 +64,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         if (!data.isEmpty())
             return data.size();
         else
-            return 1;
+            return 0;
     }
 
     private void loadImage(@NonNull ImageView imageView,
@@ -74,9 +76,11 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView imageFilm;
+        final TextView nameFilm;
         ViewHolder(View itemView) {
             super(itemView);
             imageFilm = itemView.findViewById(R.id.films_image);
+            nameFilm = itemView.findViewById(R.id.films_name);
         }
     }
 }

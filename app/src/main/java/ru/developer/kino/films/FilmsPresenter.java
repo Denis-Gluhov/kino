@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import ru.developer.kino.model.Movie;
+import ru.developer.kino.model.ResponseFilms;
 
 public class FilmsPresenter implements FilmsContract.Presenter,
                                 FilmsContract.Interactor.LoadListener {
@@ -25,12 +26,12 @@ public class FilmsPresenter implements FilmsContract.Presenter,
 
     @Override
     public void load() {
-
+        interactor.load(this);
     }
 
     @Override
-    public void onSuccess(@NonNull List<Movie> data) {
-
+    public void onSuccess(@NonNull ResponseFilms data) {
+        view.setData(data.getResults());
     }
 
     @Override

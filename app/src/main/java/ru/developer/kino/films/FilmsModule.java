@@ -56,7 +56,7 @@ public class FilmsModule {
     @FilmsScoupe
     @Provides
     RecyclerView.LayoutManager provideLayoutManager(@NonNull @Named("films") Context context) {
-        return new GridLayoutManager(context, 3);
+        return new GridLayoutManager(context, 2);
     }
 
     @NonNull
